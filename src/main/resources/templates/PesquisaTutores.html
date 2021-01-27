@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+		
+<head>
+<title>Pesquisa de Tutores</title>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	
+</head>
+
+<body>
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h1 class="panel-title">Pesquisa de Tutores</h1>
+		</div>
+
+		<div class="panel-body">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th class="text-center col-md-1">Codigo</th>
+						<th class="text-center col-md-3">Nome</th>
+						<th class="text-center col-md-3">Email</th>
+						<th class="text-center col-md-3">Codigo Funcionario</th>
+						<th class="text-center col-md-3">Senha</th>
+						<td class="text-center col-md-1"></td>	
+					</tr>				
+				</thead>
+				<tbody>
+					<tr th:each="tutor : ${tutores}">
+						<td class="text-center" th:text="${tutor.codigo}"></td>
+						<td class="text-center" th:text="${tutor.nome}"></td>
+						<td class="text-center" th:text="${tutor.email}"></td>
+						<td class="text-center" th:text="${tutor.codigoFuncionario}"></td>
+						<td class="text-center" th:text="${tutor.senha}"></td>
+						<td class="text-center">
+												
+							<a class="btn btn-link btn-xs" th:href="@{/tutores/{codigo}(codigo=${tutor.codigo})}">
+							   <span class ="glyphicon glyphicon-pencil"></span>
+							</a>
+							
+							<a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal">
+							   <span class ="glyphicon glyphicon-remove"></span>
+							</a>
+
+						</td>							
+					 </tr>
+					 
+					<tr>
+						<td colspan="3" th:if="${#lists.isEmpty(tutores)}">nenhum tutor cadastrado</td>				
+					 </tr>
+				
+				</tbody>
+			</table>		
+		</div>
+	<div class="modal fade" id="confirmacaoExclusaoModal" tabindex="-1" data-keybord="false" data-backdrop="static">
+ 	
+	 <div class="modal-dialog">
+	 
+	 	<form action="/tutores" method="POST">
+	 		<input type="hidden" name="_method" value="DELETE"/>
+		 	<div class="modal-content">
+		 	   <div class="modal-header">
+					<h4 class="modal-title">Voce tem certeza?</h4>	 	
+		 		</div>
+		 		
+		 		<div class="modal-body">
+		 			<span>Tem certeza que deseja apagar o Tutor</span>
+		 		</div>
+		 		
+		 		
+		 		<div class="modal-footer">
+		 			<button type="button" class="btn btn-link" data-dismiss="modal">Cancelar</button>
+		 			<button type="submit" class="btn btn-primary">Excluir</button>
+		 		</div>
+		 		
+		 		
+		 	</div>
+	 	</form>	 
+	 	
+	 </div>
+ </div>
+  </div>
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script  src="/js/meuJavaScript.js"></script>
+</body>	
+</html>

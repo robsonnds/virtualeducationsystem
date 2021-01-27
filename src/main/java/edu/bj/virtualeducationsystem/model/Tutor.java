@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="tutor")
@@ -15,19 +16,23 @@ public class Tutor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
+	@NotEmpty(message="Nome e obrigatorio")
 	@Column(name = "nome", nullable = false, length = 80)
 	private String nome;
 	
+	@NotEmpty(message="Email e obrigatorio")
 	@Column(name = "email", nullable = false, length = 80)
 	private String email;
 	
+	@NotEmpty(message="CodigoFuncionario e obrigatorio")
 	@Column(name = "codigoFuncionario", nullable = false, length = 80)
 	private long codigoFuncionario;
 	
+	@NotEmpty(message="Senha e obrigatorio")
 	@Column(name = "senha", nullable = false, length = 80)
 	private String senha;
 	
-	
+	//private Disciplina disciplina;
 
 	public Long getCodigo() {
 		return codigo;
@@ -60,6 +65,11 @@ public class Tutor {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	/*
+	 * public Disciplina getDisciplina() { return disciplina; } public void
+	 * setDisciplina(Disciplina disciplina) { this.disciplina = disciplina; }
+	 */
 	
 	@Override
 	public String toString() {
@@ -110,6 +120,7 @@ public class Tutor {
 			return false;
 		return true;
 	}
+	
 	
 
 }
