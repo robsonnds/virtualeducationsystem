@@ -23,7 +23,7 @@ public class DisciplinaController {
 	
 	
 	
-	private static final String CADASTRO_VIEW = "CadastroDisciplina";
+	private static final String CADASTRO_VIEW = "CadastroDisciplinas";
 	
 	@Autowired
 	private Disciplinas disciplinaRepository;
@@ -31,7 +31,7 @@ public class DisciplinaController {
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		
-		ModelAndView mv = new ModelAndView("CadastroDisciplina");
+		ModelAndView mv = new ModelAndView("CadastroDisciplinas");
 		mv.addObject(new Disciplina());
 		return mv;
 	
@@ -57,7 +57,7 @@ public class DisciplinaController {
 	public ModelAndView pesquisar() {
 		
 		List<Disciplina>todasDisciplinas = disciplinaRepository.findAll();
-		ModelAndView mv = new ModelAndView("PesquisaTutores");
+		ModelAndView mv = new ModelAndView("PesquisaDisciplinas");
 		
 		mv.addObject("disciplinas", todasDisciplinas);
 		
@@ -71,7 +71,7 @@ public class DisciplinaController {
 		
 		Disciplina disciplina	= disciplinaRepository.findById(codigo).orElse(null);
 		
-		ModelAndView mv = new ModelAndView("CadastroDisciplina");
+		ModelAndView mv = new ModelAndView("CadastroDisciplinas");
 		
 		mv.addObject(disciplina);
 		

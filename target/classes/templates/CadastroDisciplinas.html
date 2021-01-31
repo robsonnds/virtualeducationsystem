@@ -12,7 +12,7 @@
 
 
 
-	<form class="form-horizontal" method="POST" action="/alunos" th:object="${aluno}">
+	<form class="form-horizontal" method="POST" action="/disciplinas" th:object="${disciplina}">
 		<div class="alert alert-success"
 			th:if="${!#strings.isEmpty(mensagem)}">
 			<span th:text="${mensagem}">Disciplina salva com sucesso!!!</span>
@@ -29,7 +29,7 @@
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h1 class ="panel-title">Nova Disciplina</h1>
-					<a class="btn btn-link aw-link-panel" href="/alunos">Voltar para pesquisa</a>
+					<a class="btn btn-link aw-link-panel" href="/disciplinas">Voltar para pesquisa</a>
 				</div>
 			</div>
 
